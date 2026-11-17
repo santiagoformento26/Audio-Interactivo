@@ -337,7 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 61595090}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Background Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -650,6 +650,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469738523}
   m_CullTransparentMesh: 1
+--- !u!1 &531503856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531503858}
+  - component: {fileID: 531503857}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &531503857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531503856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56f22be27f68e44bbc9215d73d0085e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  mixer: {fileID: 24100000, guid: 192cecd0d79429d47b802aef47183615, type: 2}
+  menuSnap: {fileID: -4555842198740532876, guid: 192cecd0d79429d47b802aef47183615, type: 2}
+  gameSnap: {fileID: 24500006, guid: 192cecd0d79429d47b802aef47183615, type: 2}
+  pauseSnap: {fileID: 7220360425654784067, guid: 192cecd0d79429d47b802aef47183615, type: 2}
+  musicSource: {fileID: 44992260}
+  menuMusic: {fileID: 8300000, guid: 88024d3760a220c42b40240342ecf0fc, type: 3}
+  gameMusic: {fileID: 8300000, guid: 4ad4586de866d584ba7f1241cd421d75, type: 3}
+--- !u!4 &531503858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531503856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 202.41202, y: 112.07822, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &561185411
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +712,7 @@ GameObject:
   - component: {fileID: 561185413}
   - component: {fileID: 561185412}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: MenuManagment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1491,7 +1542,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2113632946}
-  - {fileID: 561185413}
-  - {fileID: 1536547827}
-  - {fileID: 34676072}
+  - {fileID: 531503858}
   - {fileID: 61595090}
+  - {fileID: 1536547827}
+  - {fileID: 561185413}
+  - {fileID: 34676072}
