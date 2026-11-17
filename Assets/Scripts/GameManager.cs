@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -55,12 +56,15 @@ public class GameManager : MonoBehaviour
             coinsText.text = count.ToString();
     }
 
+    private bool isEnding;
+
     public void NotifyPlayerDied()
     {
+        if (isEnding) return;
         OnPlayerDied?.Invoke();
         Defeat();
     }
 
     public void Victory() => SceneManager.LoadScene("Victory");
     public void Defeat() => SceneManager.LoadScene("Defeat");
-}
+    }
