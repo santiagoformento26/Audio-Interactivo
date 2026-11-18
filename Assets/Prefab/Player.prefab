@@ -108,9 +108,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 345d19952a91ca641a03daff447ea41b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 403779254980144090}
-    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 345d19952a91ca641a03daff447ea41b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1758010498176487510}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 345d19952a91ca641a03daff447ea41b, type: 3}
 --- !u!1 &6936041798967308480 stripped
 GameObject:
@@ -181,26 +178,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1758010498176487510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936041798967308480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac9faef2fa30b94d80ad8cc3ac28304, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 2
-  jumpForce: 3
-  groundCheck: {fileID: 2975686395430257501}
-  groundRadius: 0.1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  maxLives: 1
 --- !u!4 &7902761591013284005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 345d19952a91ca641a03daff447ea41b, type: 3}

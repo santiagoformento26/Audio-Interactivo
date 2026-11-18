@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     }
 
     private bool isEnding;
+    [SerializeField] private float endDelay = 1.5f;   // deja sonar el ultimo SFX antes de cambiar de escena
 
     public void NotifyPlayerDied()
     {
@@ -65,6 +66,14 @@ public class GameManager : MonoBehaviour
         Defeat();
     }
 
-    public void Victory() => SceneManager.LoadScene("Victory");
-    public void Defeat() => SceneManager.LoadScene("Defeat");
+    public void Victory() => StartCoroutine(EndRoutine("Victory"));
+    public void Defeat() => StartCoroutine(EndRoutine("Defeat"));
+
+    private IEnumerator EndRoutine(string sceneName)
+    {
+        if (isEnding) yield break;
+        isEnding = true;
+        yield return new WaitForSecondsRealtime(endDelay);
+        SceneManager.LoadScene(sceneName);
     }
+}
