@@ -708,9 +708,9 @@ MonoBehaviour:
   ambientSource: {fileID: 0}
   ambientClip: {fileID: 8300000, guid: c211bffbe3c9c074785be6101fe0bdaa, type: 3}
   voiceSource: {fileID: 2137399309}
-  startLine: {fileID: 0}
-  victoryLine: {fileID: 0}
-  defeatLine: {fileID: 0}
+  startLine: {fileID: 8300000, guid: ea9c3b9c26def6d468bb82c16620e2cb, type: 3}
+  victoryLine: {fileID: 8300000, guid: 19043ebf8de5f674ab2c389fcf2fab1a, type: 3}
+  defeatLine: {fileID: 8300000, guid: 52c19c655c97162488c2cb8e9f77dd0d, type: 3}
   voiceDelay: 0.5
   duckAmountDb: -10
   duckFadeIn: 0.15
