@@ -42,6 +42,11 @@ public class AudioManager : MonoBehaviour
 
     private Coroutine duckRoutine;
 
+    // Estado para que el filtro y el ducking sobrevivan a los TransitionTo (pausa, escenas).
+    private int currentLives = 3;
+    private bool isDucked;
+    private float musicBaseDb;
+
     private void Awake()
     {
         if (Instance != null) { Destroy(gameObject); return; }
@@ -65,7 +70,9 @@ public class AudioManager : MonoBehaviour
     {
         // Un TransitionTo restaura los parametros expuestos, asi que cortamos cualquier ducking en curso.
         StopAllVoiceRoutines();
-        mixer.SetFloat("MusicCutoff", 22000f); // reset del filtro
+        isDucked = false;
+        currentLives = 3;
+        if (mixer != null) mixer.SetFloat("MusicCutoff", 22000f); // reset del filtro
 
         switch (scene.name)
         {
@@ -121,13 +128,30 @@ public class AudioManager : MonoBehaviour
     {
         AudioMixerSnapshot snap = paused ? pauseSnap : gameSnap;
         if (snap != null) snap.TransitionTo(0.2f);
+
+        // El TransitionTo pisa los parametros expuestos: al volver al juego los reaplicamos.
+        if (!paused) StartCoroutine(ReapplyMusicParams());
+    }
+
+    private IEnumerator ReapplyMusicParams()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);   // despues de que termine la transicion
+        ApplyLivesFilter();
+        if (isDucked) mixer.SetFloat("MusicVolume", musicBaseDb + duckAmountDb);
     }
 
     // ---------------- Bloque F: filtro segun vidas ----------------
     // Cuantas menos vidas, mas "apagada" suena la musica. Se llama desde PlayerController.TakeDamage.
     public void OnLivesChanged(int lives)
     {
-        float cutoff = lives >= 3 ? 22000f : lives == 2 ? 6000f : 1500f;
+        currentLives = lives;
+        ApplyLivesFilter();
+    }
+
+    private void ApplyLivesFilter()
+    {
+        if (mixer == null) return;
+        float cutoff = currentLives >= 3 ? 22000f : currentLives == 2 ? 6000f : 1500f;
         mixer.SetFloat("MusicCutoff", cutoff); // parametro expuesto en el grupo Musica
     }
 
@@ -153,18 +177,27 @@ public class AudioManager : MonoBehaviour
     // Baja el volumen de la musica mientras suena la voz y lo devuelve despues.
     private IEnumerator DuckMusic(float holdTime)
     {
-        if (!mixer.GetFloat("MusicVolume", out float baseDb)) yield break;
-        float duckedDb = baseDb + duckAmountDb;
+        // El volumen base se guarda una sola vez: si llega otra voz mientras esta bajada,
+        // no se toma el valor ya bajado como si fuera el original.
+        if (!isDucked)
+        {
+            if (!mixer.GetFloat("MusicVolume", out musicBaseDb)) yield break;
+            isDucked = true;
+        }
+        float duckedDb = musicBaseDb + duckAmountDb;
 
-        yield return FadeMusic(baseDb, duckedDb, duckFadeIn);
+        yield return FadeMusic(duckedDb, duckFadeIn);
         yield return new WaitForSecondsRealtime(holdTime);
-        yield return FadeMusic(duckedDb, baseDb, duckFadeOut);
+        yield return FadeMusic(musicBaseDb, duckFadeOut);
 
+        isDucked = false;
         duckRoutine = null;
     }
 
-    private IEnumerator FadeMusic(float from, float to, float time)
+    // Fade desde el valor actual del mixer hasta "to".
+    private IEnumerator FadeMusic(float to, float time)
     {
+        mixer.GetFloat("MusicVolume", out float from);
         float t = 0f;
         while (t < time)
         {

@@ -101,9 +101,14 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void TakeDamage(int amount)
     {
-        Lives -= amount;
+        if (Lives <= 0) return;                       // ya murio: ignorar danio extra
 
-        if (Lives <= 0)
+        Lives = Mathf.Max(0, Lives - amount);
+
+        // Bloque F: el filtro de la musica depende de las vidas restantes.
+        AudioManager.Instance?.OnLivesChanged(Lives);
+
+        if (Lives <= 0 && GameManager.Instance != null)
         {
             GameManager.Instance.NotifyPlayerDied();
         }
