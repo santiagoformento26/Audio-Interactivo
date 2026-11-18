@@ -698,9 +698,23 @@ MonoBehaviour:
   menuSnap: {fileID: -4555842198740532876, guid: 192cecd0d79429d47b802aef47183615, type: 2}
   gameSnap: {fileID: 24500006, guid: 192cecd0d79429d47b802aef47183615, type: 2}
   pauseSnap: {fileID: 7220360425654784067, guid: 192cecd0d79429d47b802aef47183615, type: 2}
+  victorySnap: {fileID: 4305254026812219340, guid: 192cecd0d79429d47b802aef47183615, type: 2}
+  defeatSnap: {fileID: 0}
   musicSource: {fileID: 44992260}
   menuMusic: {fileID: 8300000, guid: 88024d3760a220c42b40240342ecf0fc, type: 3}
   gameMusic: {fileID: 8300000, guid: 4ad4586de866d584ba7f1241cd421d75, type: 3}
+  victoryMusic: {fileID: 8300000, guid: c0f63845c3b63a54987cca98fd69d307, type: 3}
+  defeatMusic: {fileID: 8300000, guid: 9577a3635e546a941be37aaf4ebeff8c, type: 3}
+  ambientSource: {fileID: 0}
+  ambientClip: {fileID: 0}
+  voiceSource: {fileID: 0}
+  startLine: {fileID: 0}
+  victoryLine: {fileID: 0}
+  defeatLine: {fileID: 0}
+  voiceDelay: 1
+  duckAmountDb: -10
+  duckFadeIn: 0.15
+  duckFadeOut: 0.5
 --- !u!1 &561185411
 GameObject:
   m_ObjectHideFlags: 0
