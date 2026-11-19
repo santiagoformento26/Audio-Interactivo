@@ -79,24 +79,28 @@ public class AudioManager : MonoBehaviour
             case "Menu":
                 Play(menuMusic, menuSnap, 1.5f);
                 SetAmbient(false);
+                musicSource.loop = true;
                 break;
 
             case "Game":
                 Play(gameMusic, gameSnap, 0.5f);
                 SetAmbient(true);
                 PlayVoice(startLine, voiceDelay);
+                musicSource.loop = true;
                 break;
 
             case "Victory":
                 Play(victoryMusic, victorySnap != null ? victorySnap : menuSnap, 1f);
                 SetAmbient(false);
                 PlayVoice(victoryLine, voiceDelay);
+                musicSource.loop = false;
                 break;
 
             case "Defeat":
                 Play(defeatMusic, defeatSnap != null ? defeatSnap : menuSnap, 2f);
                 SetAmbient(false);
                 PlayVoice(defeatLine, voiceDelay);
+                musicSource.loop = false;
                 break;
         }
     }
