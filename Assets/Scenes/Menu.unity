@@ -336,6 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 61595090}
+  - component: {fileID: 61595091}
   m_Layer: 0
   m_Name: Background Music
   m_TagString: Untagged
@@ -359,6 +360,18 @@ Transform:
   - {fileID: 44992259}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &61595091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61595089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40f13b22e2943b4798a2d220f21c130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Persistent
 --- !u!1 &361260734
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +717,7 @@ MonoBehaviour:
   menuMusic: {fileID: 8300000, guid: 88024d3760a220c42b40240342ecf0fc, type: 3}
   gameMusic: {fileID: 8300000, guid: 4ad4586de866d584ba7f1241cd421d75, type: 3}
   victoryMusic: {fileID: 8300000, guid: c0f63845c3b63a54987cca98fd69d307, type: 3}
-  defeatMusic: {fileID: 8300000, guid: 9577a3635e546a941be37aaf4ebeff8c, type: 3}
+  defeatMusic: {fileID: 8300000, guid: 5aeb5d2ebf07a1e48b44f6d783aa2838, type: 3}
   ambientSource: {fileID: 0}
   ambientClip: {fileID: 8300000, guid: c211bffbe3c9c074785be6101fe0bdaa, type: 3}
   voiceSource: {fileID: 2137399309}
@@ -901,6 +914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1300305650}
+  - component: {fileID: 1300305651}
   m_Layer: 0
   m_Name: VoiceLine
   m_TagString: Untagged
@@ -917,13 +931,25 @@ Transform:
   m_GameObject: {fileID: 1300305649}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.68461, y: -0.7758, z: 0}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2137399308}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1300305651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300305649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af49c9d3f2d2644e8d30085e1cc3dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Persistent1
 --- !u!1 &1363832091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,7 +1652,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6745864360999177992, guid: 192cecd0d79429d47b802aef47183615, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: ea9c3b9c26def6d468bb82c16620e2cb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
