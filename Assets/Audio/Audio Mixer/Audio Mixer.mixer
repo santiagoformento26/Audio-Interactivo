@@ -258,5 +258,8 @@ AudioMixerSnapshotController:
   m_Name: Pause
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: c40eaa1a8d3692f4b8486a5792fb6973
-  m_FloatValues: {}
+  m_FloatValues:
+    fe84cc734a62d8247984acd4c9a16e10: -80
+    479fd5879b1c0724fa1ee3cb93b3c54f: 1
+    ebb817f897e787d4d920615aae7a3792: -80
   m_TransitionOverrides: {}

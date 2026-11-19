@@ -11,11 +11,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixer mixer;
 
     [Header("Snapshots (Bloque B)")]
-    [SerializeField] private AudioMixerSnapshot menuSnap;
     [SerializeField] private AudioMixerSnapshot gameSnap;
     [SerializeField] private AudioMixerSnapshot pauseSnap;
     [SerializeField] private AudioMixerSnapshot victorySnap;   // opcional: crear "Victoria" en el mixer
-    [SerializeField] private AudioMixerSnapshot defeatSnap;    // opcional: crear "Derrota" en el mixer
 
     [Header("Musica (Output: Musica)")]
     [SerializeField] private AudioSource musicSource;
@@ -23,10 +21,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip gameMusic;
     [SerializeField] private AudioClip victoryMusic;           // opcional
     [SerializeField] private AudioClip defeatMusic;            // opcional
-
-    [Header("Ambiente (Bloque D, Output: Ambiente)")]
-    [SerializeField] private AudioSource ambientSource;        // 2D, loop
-    [SerializeField] private AudioClip ambientClip;            // oleaje / viento de playa
 
     [Header("Voz (Bloque E, Output: Voz)")]
     [SerializeField] private AudioSource voiceSource;          // 2D
@@ -54,9 +48,8 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        // Decision 2D: musica, ambiente y voz no dependen de la distancia.
+        // Decision 2D: musica y voz no dependen de la distancia.
         if (musicSource != null) musicSource.spatialBlend = 0f;
-        if (ambientSource != null) { ambientSource.spatialBlend = 0f; ambientSource.loop = true; }
         if (voiceSource != null) voiceSource.spatialBlend = 0f;
     }
 
@@ -77,28 +70,24 @@ public class AudioManager : MonoBehaviour
         switch (scene.name)
         {
             case "Menu":
-                Play(menuMusic, menuSnap, 1.5f);
-                SetAmbient(false);
+                Play(menuMusic, null, 1.5f);
                 musicSource.loop = true;
                 break;
 
             case "Game":
                 Play(gameMusic, gameSnap, 0.5f);
-                SetAmbient(true);
                 PlayVoice(startLine, voiceDelay);
                 musicSource.loop = true;
                 break;
 
             case "Victory":
-                Play(victoryMusic, victorySnap != null ? victorySnap : menuSnap, 1f);
-                SetAmbient(false);
+                Play(victoryMusic, victorySnap, 1f);
                 PlayVoice(victoryLine, voiceDelay);
                 musicSource.loop = false;
                 break;
 
             case "Defeat":
-                Play(defeatMusic, defeatSnap != null ? defeatSnap : menuSnap, 2f);
-                SetAmbient(false);
+                Play(defeatMusic, null, 2f);
                 PlayVoice(defeatLine, voiceDelay);
                 musicSource.loop = false;
                 break;
@@ -114,17 +103,6 @@ public class AudioManager : MonoBehaviour
             musicSource.Play();
         }
         if (snap != null) snap.TransitionTo(time);
-    }
-
-    private void SetAmbient(bool on)
-    {
-        if (ambientSource == null) return;
-        if (on)
-        {
-            if (ambientSource.clip != ambientClip) ambientSource.clip = ambientClip;
-            if (ambientClip != null && !ambientSource.isPlaying) ambientSource.Play();
-        }
-        else ambientSource.Stop();
     }
 
     // Se llama desde PauseManager.

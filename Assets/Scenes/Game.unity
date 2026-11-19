@@ -6169,7 +6169,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  maxLives: 1
+  maxLives: 3
   jumpSource: {fileID: 1653167308}
   jumpClip: {fileID: 8300000, guid: 6f84a936d6532c2409f2a22a96848f05, type: 3}
   jumpPitchRange: {x: 0.95, y: 1.1}
