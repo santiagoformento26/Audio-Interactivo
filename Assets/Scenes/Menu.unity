@@ -708,18 +708,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   mixer: {fileID: 24100000, guid: 192cecd0d79429d47b802aef47183615, type: 2}
-  menuSnap: {fileID: 0}
   gameSnap: {fileID: 24500006, guid: 192cecd0d79429d47b802aef47183615, type: 2}
   pauseSnap: {fileID: 7220360425654784067, guid: 192cecd0d79429d47b802aef47183615, type: 2}
   victorySnap: {fileID: 4305254026812219340, guid: 192cecd0d79429d47b802aef47183615, type: 2}
-  defeatSnap: {fileID: 0}
   musicSource: {fileID: 44992260}
   menuMusic: {fileID: 8300000, guid: 88024d3760a220c42b40240342ecf0fc, type: 3}
   gameMusic: {fileID: 8300000, guid: 4ad4586de866d584ba7f1241cd421d75, type: 3}
   victoryMusic: {fileID: 8300000, guid: c0f63845c3b63a54987cca98fd69d307, type: 3}
   defeatMusic: {fileID: 8300000, guid: 5aeb5d2ebf07a1e48b44f6d783aa2838, type: 3}
-  ambientSource: {fileID: 0}
-  ambientClip: {fileID: 8300000, guid: c211bffbe3c9c074785be6101fe0bdaa, type: 3}
   voiceSource: {fileID: 2137399309}
   startLine: {fileID: 8300000, guid: ea9c3b9c26def6d468bb82c16620e2cb, type: 3}
   victoryLine: {fileID: 8300000, guid: 19043ebf8de5f674ab2c389fcf2fab1a, type: 3}
@@ -1027,7 +1023,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5258483500305071194, guid: 192cecd0d79429d47b802aef47183615, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: c211bffbe3c9c074785be6101fe0bdaa, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1678,7 +1674,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5258483500305071194, guid: 192cecd0d79429d47b802aef47183615, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: f933948226f89b646b3f3e83c443782b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

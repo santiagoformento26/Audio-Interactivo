@@ -6176,8 +6176,8 @@ MonoBehaviour:
   jumpVolumeRange: {x: 0.85, y: 1}
   stepsSource: {fileID: 1653167307}
   stepClips:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 0a39a11ebe46308469ded115c996d535, type: 3}
+  - {fileID: 8300000, guid: 3f71c7c1c9e6b2d44b56bf0d87e72a7b, type: 3}
   stepInterval: 0.4
   stepPitchRange: {x: 0.9, y: 1.1}
   stepVolumeRange: {x: 0.6, y: 0.8}
